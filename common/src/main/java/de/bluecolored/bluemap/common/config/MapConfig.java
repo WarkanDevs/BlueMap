@@ -41,6 +41,8 @@ import java.nio.file.Path;
 @Getter
 public class MapConfig implements MapSettings {
 
+    private boolean renderOnStartup = true;
+
     @Nullable private Path world = null;
     @Nullable private Key dimension = null;
 

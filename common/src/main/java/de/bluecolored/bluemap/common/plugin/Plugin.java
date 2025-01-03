@@ -269,7 +269,11 @@ public class Plugin implements ServerEventListener {
                         .sorted(Comparator.comparing(bmMap -> bmMap.getMapSettings().getSorting()))
                         .forEach(map -> {
                     if (pluginState.getMapState(map).isUpdateEnabled()) {
-                        renderManager.scheduleRenderTask(new MapUpdateTask(map));
+                        if (map.getMapSettings().isRenderOnStartup()) {
+                            renderManager.scheduleRenderTask(new MapUpdateTask(map));
+                        } else {
+                            Logger.global.logWarning("Map " + map.getId() + " is disabled for render on startup, skipping map update task...");
+                        }
                     }
                 });
 

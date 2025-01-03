@@ -70,4 +70,6 @@ public interface MapSettings extends RenderSettings {
         return !isEnableHires() || (!isEnablePerspectiveView() && !isEnableFreeFlightView());
     }
 
+    boolean isRenderOnStartup();
+
 }
